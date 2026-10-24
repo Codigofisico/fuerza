@@ -1,0 +1,6 @@
+{
+  "name": "Código Fuerza 28 | Landing Page Oficial",
+  "description": "Landing page de alta conversión para Código Fuerza 28: Desde Cero — Entrena en casa sin equipo + 4 bonos digitales por Código Físico.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

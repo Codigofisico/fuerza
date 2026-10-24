@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-carbon: #101115;
+    --color-carbon-light: #191B20;
+    --color-carbon-card: #14161C;
+    --color-gold: #FFC83D;
+    --color-gold-light: #FFD45F;
+    --color-gold-hover: #FFD45F;
+    --color-text-muted: #B8BBC2;
+    --color-light-bg: #F5F5F5;
+  }
+
+  body {
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    background-color: #101115;
+    color: #B8BBC2;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom utility styles for gold glow and subtle effects without AI slop */
+.gold-glow {
+  box-shadow: 0 0 35px -8px rgba(255, 200, 61, 0.28);
+}
+
+.gold-glow-lg {
+  box-shadow: 0 0 60px -10px rgba(255, 200, 61, 0.35);
+}
+
+.book-shadow {
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 10px rgba(255, 200, 61, 0.12));
+}
+
+.book-shadow-sm {
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.7));
+}
+
+/* Infinite continuous carousel marquee */
+@keyframes infiniteMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-infinite-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: infiniteMarquee 36s linear infinite;
+}
+
+.animate-infinite-marquee.paused {
+  animation-play-state: paused !important;
+}
+
+.animate-infinite-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================================
+   PREMIUM CTA BUTTON MICROANIMATIONS & DESIGN BASE
+   ======================================================== */
+
+@keyframes ctaEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-cta-entrance {
+  animation: ctaEntrance 400ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.cta-button-base {
+  background-color: #FFC83D;
+  color: #101115;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  border-radius: 12px;
+  min-height: 56px;
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1),
+              background-color 200ms cubic-bezier(0, 0, 0.2, 1),
+              box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cta-button-base:hover {
+    transform: scale(1.02);
+    background-color: #FFD45F;
+  }
+}
+
+.cta-button-base:active {
+  transform: scale(0.98) !important;
+  transition-duration: 100ms !important;
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cta-entrance {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .cta-button-base,
+  .cta-button-base:hover,
+  .cta-button-base:active,
+  .cta-button-base * {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Smooth mobile tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
